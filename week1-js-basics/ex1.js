@@ -8,7 +8,6 @@
     使用 reduce 計算這些完成訂單的總金額 (amount)。 
 */
 
-
 // 原始資料
 const orders = [
     { id: "ord001", amount: 1000, status: "completed" },
@@ -18,16 +17,18 @@ const orders = [
 ];
 
 // 1. 使用filter篩選已完成的訂單
-const completedOrders = orders.filter(order => order.status === "completed");
+const completedOrders = orders.filter((order) => order.status === "completed");
 
 // 2. 使用map轉出訂單ID陣列
-const completedOrdersIds = completedOrders.map(order => order.id);
+const completedOrdersIds = completedOrders.map((order) => order.id);
 
 // 3. 使用reduce計算總金額
-const totalAmount = completedOrders.reduce((sum, order) => sum + order.amount, 0);
+const totalAmount = completedOrders.reduce(
+    (sum, order) => sum + order.amount,
+    0
+);
 
 // 輸出結果
 console.log("已完成的訂單物件:", completedOrders);
 console.log("已完成的訂單ID陣列:", completedOrdersIds);
 console.log("已完成的訂單總金額:", totalAmount);
-
