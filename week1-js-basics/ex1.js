@@ -17,4 +17,17 @@ const orders = [
     { id: "ord004", amount: 300, status: "canceled" },
 ];
 
+// 1. 使用filter篩選已完成的訂單
+const completedOrders = orders.filter(order => order.status === "completed");
+
+// 2. 使用map轉出訂單ID陣列
+const completedOrdersIds = completedOrders.map(order => order.id);
+
+// 3. 使用reduce計算總金額
+const totalAmount = completedOrders.reduce((sum, order) => sum + order.amount, 0);
+
+// 輸出結果
+console.log("已完成的訂單物件:", completedOrders);
+console.log("已完成的訂單ID陣列:", completedOrdersIds);
+console.log("已完成的訂單總金額:", totalAmount);
 
