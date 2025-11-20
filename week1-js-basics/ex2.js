@@ -12,7 +12,7 @@
       - 模擬 1000ms 的網路延遲
       - 邏輯:
       - 落 id < 0 時，拒絕(reject) Promise，並傳回錯誤訊息 "Invalid user ID"
-      - 落 id >= 0 時，解決(resolve) Promise，並傳回一個模擬的使用者物件 { id: id, name: "User" }
+      - 落 id >= 0 時，解決(resolve) Promise，並傳回一個模擬的使用者物件 { id: id, name: "UserName" }
 
   2. 建立一個 getPostsByUser(userId) 函式
       - 接收一個使用者ID作為參數
@@ -38,3 +38,16 @@
   ---測試錯誤捕捉---
   發生錯誤: Invalid user ID
 */
+
+// 1. 建立 getUser 函式
+function getUser(id) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (id < 0) {
+        reject("Invalid user ID");
+      } else {
+        resolve({ id: id, name: "UserName" });
+      }
+    }, 1000);
+  });
+}
