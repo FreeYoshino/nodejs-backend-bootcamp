@@ -31,7 +31,7 @@
   ---開始模擬API請求---
   正在讀取使用者資料...
   (等待 1 秒)
-  User fetched: John Doe
+  User fetched: UserName
   正在讀取Posts...
   (等待 0.5 秒)
   Posts fetched: [ 'Post 1', 'Post 2', 'Post 3' ]
@@ -59,4 +59,21 @@ const getPostsByUser = (userId) => {
       resolve(["Post 1", "Post 2", "Post 3"]);
     }, 500);
   });
+};
+
+// 3. 主流程 main
+const main = async () => {
+  console.log("---開始模擬API請求---");
+  try {
+    console.log("正在讀取使用者資料...");
+    const user = await getUser(1);
+    console.log("Usrer fetched:", user.name);
+    console.log("正在讀取Posts...");
+    const posts = await getPostsByUser(user.id);
+    console.log("Posts fetched:", posts);
+    console.log("---測試錯誤捕捉---");
+    await getUser(-1);
+  } catch (error) {
+    console.log("發生錯誤:", error.message);
+  }
 };
