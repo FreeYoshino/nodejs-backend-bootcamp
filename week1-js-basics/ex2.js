@@ -40,14 +40,14 @@
 */
 
 // 1. 建立 getUser 函式
-function getUser(id) {
+const getUser = (id) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (id < 0) {
-        reject("Invalid user ID");
+        reject(new Error("Invalid user ID"));
       } else {
         resolve({ id: id, name: "UserName" });
       }
     }, 1000);
   });
-}
+};
