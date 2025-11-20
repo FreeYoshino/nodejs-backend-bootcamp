@@ -51,3 +51,12 @@ const getUser = (id) => {
     }, 1000);
   });
 };
+
+// 2. 建立 getPostsByUser 函式
+const getPostsByUser = (userId) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(["Post 1", "Post 2", "Post 3"]);
+    }, 500);
+  });
+};
