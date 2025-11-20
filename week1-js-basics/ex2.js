@@ -67,7 +67,7 @@ const main = async () => {
   try {
     console.log("正在讀取使用者資料...");
     const user = await getUser(1);
-    console.log("Usrer fetched:", user.name);
+    console.log("User fetched:", user.name);
     console.log("正在讀取Posts...");
     const posts = await getPostsByUser(user.id);
     console.log("Posts fetched:", posts);
@@ -77,3 +77,6 @@ const main = async () => {
     console.log("發生錯誤:", error.message);
   }
 };
+
+// 執行主流程
+main();
