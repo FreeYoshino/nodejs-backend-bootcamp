@@ -10,10 +10,10 @@
 
 // 原始資料
 const orders = [
-    { id: "ord001", amount: 1000, status: "completed" },
-    { id: "ord002", amount: 500, status: "pending" },
-    { id: "ord003", amount: 1200, status: "completed" },
-    { id: "ord004", amount: 300, status: "canceled" },
+  { id: "ord001", amount: 1000, status: "completed" },
+  { id: "ord002", amount: 500, status: "pending" },
+  { id: "ord003", amount: 1200, status: "completed" },
+  { id: "ord004", amount: 300, status: "canceled" },
 ];
 
 // 1. 使用filter篩選已完成的訂單
@@ -24,8 +24,8 @@ const completedOrdersIds = completedOrders.map((order) => order.id);
 
 // 3. 使用reduce計算總金額
 const totalAmount = completedOrders.reduce(
-    (sum, order) => sum + order.amount,
-    0
+  (sum, order) => sum + order.amount,
+  0,
 );
 
 // 輸出結果
