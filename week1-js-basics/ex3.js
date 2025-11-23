@@ -36,3 +36,35 @@
  * Privacy: friends
  * App Version: 1.0.0
  */
+
+// 1. 定義預設設定
+const defaultSettings = {
+  theme: "light",
+  notifications: "true",
+  privacy: "public",
+  version: "1.0.0",
+};
+
+// 2. 定義使用者偏好
+const userSettings = {
+  theme: "dark",
+  privacy: "friends",
+};
+
+// 3. 實作合併邏輯
+// 使用 Spread Operator 合併物件
+// Overwrite 後面的屬性值蓋掉前面的屬性值
+const finalSettings = {
+  ...defaultSettings,
+  ...userSettings,
+};
+
+// 4. 實作資料提取
+// Rename語法： { 舊名字: 新名字 }
+const { theme, privacy, version: appVersion } = finalSettings;
+
+// 5. 輸出結果
+console.log("Final Settings: ", finalSettings);
+console.log("Theme: ", theme);
+console.log("Privacy: ", privacy);
+console.log("App Version: ", appVersion);
