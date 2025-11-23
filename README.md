@@ -10,7 +10,7 @@
 
 - [x] **Week 1: JavaScript ES6+ Deep Dive**
   - [x] `Arrow Functions` & `Scopes`
-  - [ ] `Async/Await` & `Promise` (非同步控制)
+  - [x] `Async/Await` & `Promise` (非同步控制)
   - [ ] `Array Methods` (Map, Filter, Reduce)
 - [ ] **Week 2: TypeScript Fundamentals**
   - [ ] Type & Interface
