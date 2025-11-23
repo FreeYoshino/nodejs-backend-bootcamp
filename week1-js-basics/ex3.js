@@ -40,7 +40,7 @@
 // 1. 定義預設設定
 const defaultSettings = {
   theme: "light",
-  notifications: "true",
+  notifications: true,
   privacy: "public",
   version: "1.0.0",
 };
