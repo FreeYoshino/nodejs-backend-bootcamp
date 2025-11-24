@@ -53,15 +53,13 @@ const filterOrders = (data: Order[], status: OrderStatus): Order[] => {
 // TODO 2: 實作 getOrderIds
 // 提示：回傳值是 string[]
 const getOrderIds = (data: Order[]): string[] => {
-  // 請填寫邏輯 (使用 map)
-  return [];
+  return data.map((order) => order.id);
 };
 
 // TODO 3: 實作 getTotalAmount
 // 提示：回傳值是 number
 const getTotalAmount = (data: Order[]): number => {
-  // 請填寫邏輯 (使用 reduce)
-  return 0;
+  return data.reduce((sum, order) => sum + order.amount, 0);
 };
 
 // --- 主程式執行區 ---
