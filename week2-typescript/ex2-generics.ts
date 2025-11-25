@@ -34,6 +34,9 @@ interface OrderDetail {
 // 提示：interface 名稱後面要加 <T>
 interface ApiResponse<T> {
   // 請填寫屬性... (success, data, timestamp)
+  success: boolean;
+  timestamp: number;
+  data: T;
 }
 
 // TODO 2: 實作泛型函式 createResponse
@@ -41,7 +44,11 @@ interface ApiResponse<T> {
 const createResponse = <T>(data: T): ApiResponse<T> => {
   // 請回傳一個物件，包含 success, data, timestamp
   // (這裡先給一個假的 return 防止編譯錯誤，請修改它)
-  return {} as ApiResponse<T>;
+  return {
+    success: true, // 固定為true
+    timestamp: Date.now(), // 當下時間毫秒數
+    data: data,
+  };
 };
 
 // --- 主程式執行區 ---
@@ -58,6 +65,5 @@ console.log("User Response:", userResponse);
 const order: OrderDetail = { orderId: "ord_999", amount: 2500 };
 
 // 請建立 orderResponse，並呼叫 createResponse (指定 T 為 OrderDetail)
-// const orderResponse = ...
-
-// console.log("Order Response:", orderResponse);
+const orderResponse = createResponse<OrderDetail>(order);
+console.log("Order Response:", orderResponse);
