@@ -40,7 +40,7 @@ const dbUsers: User[] = [
 // 需求：
 // 1. `newDetails` 參數的型別必須使用 Utility Type，讓 User 的所有欄位變成「選填」。
 //    (這樣呼叫時才不用把 id, email, role 全部傳進來)
-const updateUser = (id: number, newDetails: any /* 請修改這裡的 any */) => {
+const updateUser = (id: number, newDetails: Partial<User>) => {
   // 1. 找到該使用者
   const userIndex = dbUsers.findIndex((u) => u.id === id);
   if (userIndex === -1) {
@@ -49,7 +49,7 @@ const updateUser = (id: number, newDetails: any /* 請修改這裡的 any */) =>
   }
 
   // 2. 更新資料 (合併舊資料與新資料)
-  const updatedUser = { ...dbUsers[userIndex], ...newDetails };
+  const updatedUser = { ...dbUsers[userIndex], ...newDetails } as User;
 
   // 3. 存回模擬資料庫
   dbUsers[userIndex] = updatedUser;
@@ -60,13 +60,13 @@ const updateUser = (id: number, newDetails: any /* 請修改這裡的 any */) =>
 // TODO 2: 定義 UserSummary 類型
 // 需求：使用 Utility Type 從 User 中「挑選」出 'name' 和 'email' 兩個欄位就好。
 // 提示：Pick<T, K>
-type UserSummary = any; // 請修改這裡
+type UserSummary = Pick<User, "name" | "email">;
 
 // TODO 3: 實作 getUserSummary 函式
 // 需求：接收 User 陣列，回傳 UserSummary 陣列
 const getUserSummary = (users: User[]): UserSummary[] => {
   // 請使用 map 回傳只包含 name 和 email 的物件
-  return [];
+  return users.map((user) => ({ name: user.name, email: user.email }));
 };
 
 // --- 主程式執行區 ---
