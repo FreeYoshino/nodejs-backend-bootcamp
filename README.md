@@ -12,10 +12,10 @@
   - [x] `Arrow Functions` & `Scopes`
   - [x] `Async/Await` & `Promise` (非同步控制)
   - [x] `Array Methods` (Map, Filter, Reduce)
-- [ ] **Week 2: TypeScript Fundamentals**
-  - [ ] Type & Interface
-  - [ ] Generics & Utility Types
-  - [ ] TS Config & Compilation
+- [x] **Week 2: TypeScript Fundamentals**
+  - [x] Type & Interface
+  - [x] Generics & Utility Types
+  - [x] TS Config & Compilation
 - [ ] **Week 3-4: Node.js Internal Modules**
   - [ ] File System (fs) & Streams
   - [ ] Event Loop 機制理解
