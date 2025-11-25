@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-backend-bootcamp",
+  "version": "1.0.0",
+  "description": "目前的學習重點在於 **Phase 1: 打地基**。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FreeYoshino/nodejs-backend-bootcamp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FreeYoshino/nodejs-backend-bootcamp/issues"
+  },
+  "homepage": "https://github.com/FreeYoshino/nodejs-backend-bootcamp#readme",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
