@@ -16,10 +16,10 @@
   - [x] Type & Interface
   - [x] Generics & Utility Types
   - [x] TS Config & Compilation
-- [ ] **Week 3: Node.js Core - File System**
-  - [ ] Path Module (路徑處理)
-  - [ ] FS Module (檔案讀寫: readFile, writeFile)
-  - [ ] Buffer & JSON Parsing
+- [x] **Week 3: Node.js Core - File System**
+  - [x] Path Module (路徑處理)
+  - [x] FS Module (檔案讀寫: readFile, writeFile)
+  - [x] Buffer & JSON Parsing
 - [ ] **Week 4: Node.js Core - System & Events**
   - [ ] Event Emitter (事件驅動架構)
   - [ ] Streams (串流處理大檔案)
