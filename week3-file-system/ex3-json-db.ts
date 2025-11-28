@@ -36,21 +36,27 @@ const main = async () => {
     // 步驟 A: 使用 fs.readFile 讀取檔案 (記得用 utf-8)
     // 步驟 B: 使用 JSON.parse() 把字串變成 Todo[] 陣列
     // ... 請在此實作讀取邏輯 ...
-
+    const fileContent = await fs.readFile(dbPath, "utf-8");
+    const todos: Todo[] = JSON.parse(fileContent);
     console.log("目前資料庫內容:", todos);
 
     // TODO 2: 新增一筆資料
     // 請建立一個新 Todo 物件 (id 可以用 Date.now(), task 隨便寫, done: false)
     // 然後把它 push 到上面的 todos 陣列裡
-    // const newTodo: Todo = ... 請在此實作建立新 Todo 物件 ...
+    const newTodo: Todo = {
+      id: Date.now(),
+      task: "新任務",
+      done: false,
+    };
     // ... 請在此把 newTodo 加入 todos 陣列 ...
-
+    todos.push(newTodo);
     // TODO 3: 寫回檔案 (持久化)
     // 步驟 A: 使用 JSON.stringify(todos, null, 2) 把陣列變回字串
     // (那個 null, 2 是為了讓 JSON 縮排漂亮，不是擠成一行)
     // 步驟 B: 使用 fs.writeFile 寫回檔案
-    // const updatedContent = ... 請在此實作轉字串邏輯
+    const updatedContent = JSON.stringify(todos, null, 2);
     // ... 請在此實作寫入邏輯 ...
+    await fs.writeFile(dbPath, updatedContent);
 
     console.log("✅ 新增成功！請打開 todos.json 查看結果");
   } catch (error) {
