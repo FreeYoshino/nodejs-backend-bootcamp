@@ -16,9 +16,14 @@
   - [x] Type & Interface
   - [x] Generics & Utility Types
   - [x] TS Config & Compilation
-- [ ] **Week 3-4: Node.js Internal Modules**
-  - [ ] File System (fs) & Streams
-  - [ ] Event Loop 機制理解
+- [ ] **Week 3: Node.js Core - File System**
+  - [ ] Path Module (路徑處理)
+  - [ ] FS Module (檔案讀寫: readFile, writeFile)
+  - [ ] Buffer & JSON Parsing
+- [ ] **Week 4: Node.js Core - System & Events**
+  - [ ] Event Emitter (事件驅動架構)
+  - [ ] Streams (串流處理大檔案)
+  - [ ] Process & CLI Arguments
 - [ ] **🏆 Project 1: Task Tracker CLI** (純 Node.js 實作指令列工具)
 
 ## 🤖 AI 協作與學習模式 (AI-Assisted Learning)
