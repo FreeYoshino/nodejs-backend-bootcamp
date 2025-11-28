@@ -29,6 +29,7 @@ const main = async () => {
     // TODO 1: 寫入檔案
     // 語法：await fs.writeFile(路徑, 內容);
     // 請在此實作寫入邏輯...
+    await fs.writeFile(filePath, content);
 
     console.log("✅ 寫入成功！");
 
@@ -37,13 +38,14 @@ const main = async () => {
     // TODO 2: 讀取檔案
     // 語法：const data = await fs.readFile(路徑, 'utf-8');
     // 請在此實作讀取邏輯...
-    // const data = ...
+    const data = await fs.readFile(filePath, "utf-8");
 
-    // console.log("📖 讀取到的內容:\n", data);
+    console.log("📖 讀取到的內容:\n", data);
 
     // TODO 3: (加分題) 刪除檔案 (清理戰場)
     // 為了不留下垃圾檔案，測試完後可以使用 await fs.unlink(路徑) 把檔案刪掉
-    // console.log("🗑️ 測試檔案已刪除");
+    await fs.unlink(filePath);
+    console.log("🗑️ 測試檔案已刪除");
   } catch (error) {
     console.error("發生錯誤:", error);
   }
