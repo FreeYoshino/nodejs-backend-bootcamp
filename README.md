@@ -20,10 +20,10 @@
   - [x] Path Module (路徑處理)
   - [x] FS Module (檔案讀寫: readFile, writeFile)
   - [x] Buffer & JSON Parsing
-- [ ] **Week 4: Node.js Core - System & Events**
-  - [ ] Event Emitter (事件驅動架構)
-  - [ ] Streams (串流處理大檔案)
-  - [ ] Process & CLI Arguments
+- [x] **Week 4: Node.js Core - System & Events**
+  - [x] Event Emitter (事件驅動架構)
+  - [x] Streams (串流處理大檔案)
+  - [x] Process & CLI Arguments
 - [ ] **🏆 Project 1: Task Tracker CLI** (純 Node.js 實作指令列工具)
 
 ## 🤖 AI 協作與學習模式 (AI-Assisted Learning)
