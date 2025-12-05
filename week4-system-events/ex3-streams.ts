@@ -35,20 +35,26 @@ const copyFileWithStream = () => {
   // TODO 1: 建立讀取水管 (Read Stream)
   // 使用 fs.createReadStream(檔案路徑, { encoding: 'utf-8' })
   // highWaterMark 是決定一次流多少水過來 (這裡設 64KB)
+  const readStream = fs.createReadStream(bigFilePath, {
+    encoding: "utf-8",
+    highWaterMark: 64 * 1024, // 64KB
+  })
 
   // TODO 2: 建立寫入水管 (Write Stream)
   // 使用 fs.createWriteStream(檔案路徑)
+  const writeStream = fs.createWriteStream(copyFilePath);
 
   // 監聽 'data' 事件：每次有水流過來就會觸發
   let chunkCount = 0;
   readStream.on("data", (chunk) => {
     chunkCount++;
     // 這裡可以觀察到，檔案是被切成一塊一塊 (chunk) 進來的
-    // console.log(`收到第 ${chunkCount} 塊資料，大小: ${chunk.length} bytes`);
+    console.log(`收到第 ${chunkCount} 塊資料，大小: ${chunk.length} bytes`);
   });
 
   // TODO 3: 接水管 (.pipe)
   // 最神奇的一行！把讀取水管直接接到寫入水管
+  readStream.pipe(writeStream);
 
   // 監聽 'end' 事件：水流完了
   readStream.on("end", () => {
