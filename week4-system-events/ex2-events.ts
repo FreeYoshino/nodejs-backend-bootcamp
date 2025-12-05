@@ -32,12 +32,12 @@ class DownloadManager extends EventEmitter {
       if (progress <= 100) {
         // TODO 2: 發送 'progress' 事件
         // 帶上目前的進度數字 (progress)
-        // this.emit( ... )
+        this.emit("progress", progress);
       } else {
         clearInterval(timer);
         // TODO 3: 發送 'complete' 事件
         // 帶上 "下載完成" 的訊息
-        // this.emit( ... )
+        this.emit("complete", `${filename} 下載完成`);
       }
     }, 500);
   }
@@ -58,12 +58,14 @@ downloader.on("start", (filename) => {
 // TODO 4: 監聽 'progress'
 // 印出: "⏳ 下載進度: 20%" ... 等等
 downloader.on("progress", (percent) => {
-  // ...
+  console.log(`⏳ 下載進度: ${percent}%`);
 });
 
 // TODO 5: 監聽 'complete'
 // 印出: "🎉 恭喜！檔案處理完畢。"
-
+downloader.on("complete", (message) => {
+  console.log(`🎉 恭喜！${message}`);
+});
 // --- 觸發區 ---
 console.log("--- 事件驅動測試開始 ---");
 downloader.startDownload("game-setup.exe");
