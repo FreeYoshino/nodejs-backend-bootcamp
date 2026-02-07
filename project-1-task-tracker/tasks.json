@@ -1,16 +1,16 @@
 [
   {
-    "id": 1770350100395,
-    "description": "測試資料寫入功能",
+    "id": 1770437748708,
+    "description": "學習TypeScript",
     "status": "todo",
-    "createdAt": "2026-02-06T03:55:00.395Z",
-    "updatedAt": "2026-02-06T03:55:00.395Z"
+    "createdAt": "2026-02-07T04:15:48.708Z",
+    "updatedAt": "2026-02-07T04:15:48.708Z"
   },
   {
-    "id": 1770350133289,
-    "description": "測試資料寫入功能",
+    "id": 1770437748718,
+    "description": "進入phase 2",
     "status": "todo",
-    "createdAt": "2026-02-06T03:55:33.289Z",
-    "updatedAt": "2026-02-06T03:55:33.290Z"
+    "createdAt": "2026-02-07T04:15:48.718Z",
+    "updatedAt": "2026-02-07T04:15:48.718Z"
   }
 ]
