@@ -18,6 +18,11 @@ export const readTasks = (): Task[] => {
   // 讀取文件內容
   const fileContent = fs.readFileSync(filePath, "utf-8");
 
+  // 如果文件內容為空，返回空陣列
+  if (!fileContent) {
+    return [];
+  }
+
   // 解析 JSON 並返回任務陣列
   try {
     return JSON.parse(fileContent) as Task[];
