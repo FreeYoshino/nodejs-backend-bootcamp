@@ -1,4 +1,3 @@
-import { Task } from "./type";
 import {
   addTask,
   updateTask,
@@ -6,27 +5,67 @@ import {
   markTaskStatus,
   listTasks,
 } from "./service";
+import { TaskStatus } from "./type";
 
-console.log("測試Service功能");
+// 解析命令行參數
+const args = process.argv.slice(2);
+const command = args[0]; // 命令 (add, update, delete, mark, list)
 
-// // 新增任務
-// addTask("完成task tracker專案");
-// addTask("學習TypeScript");
-// addTask("進入phase 2");
+// 根據命令執行對應的操作
+switch (command) {
+  case "add":
+    const description = args.slice(1);
+    if (description.length === 0) {
+      console.log("錯誤: 請提供任務描述");
+    } else {
+      addTask(description.join(" "));
+    }
+    break;
 
+  case "update":
+    const updateId = parseInt(args[1]);
+    const updateDescription = args.slice(2);
+    if (isNaN(updateId) || updateDescription.length === 0) {
+      console.log("錯誤: 請提供任務ID和新的描述");
+    } else {
+      updateTask(updateId, updateDescription.join(" "));
+    }
+    break;
 
+  case "delete":
+    const deleteId = parseInt(args[1]);
+    if (isNaN(deleteId)) {
+      console.log("錯誤: 請提供任務ID");
+    } else {
+      deleteTask(deleteId);
+    }
+    break;
 
-// 測試更新任務描述
-updateTask(1770437748698, "完成task tracker專案 - 更新描述");
-updateTask(123456789, "這個ID不存在的任務");
+  case "mark-in-progress":
+    const progId = parseInt(args[1]);
+    if (isNaN(progId)) {
+      console.log("錯誤: 請提供任務ID");
+    } else {
+      markTaskStatus(progId, "in-progress");
+    }
+    break;
 
-// 測試標記任務狀態
-markTaskStatus(1770437748698, "in-progress");
-markTaskStatus(123456789, "done"); // 測試標記不存在的任務狀態
+  case "mark-done":
+    const doneId = parseInt(args[1]);
+    if (isNaN(doneId)) {
+      console.log("錯誤: 請提供任務ID");
+    } else {
+      markTaskStatus(doneId, "done");
+    }
+    break;
 
-// 測試刪除任務
-deleteTask(1770437748698);
-deleteTask(123456789); // 測試刪除不存在的任務
-
-// 列出所有任務
-listTasks();
+  case "list":
+    const statusFilter = args[1] as TaskStatus | undefined;
+    listTasks(statusFilter);
+    break;
+  
+  default:
+    console.log(`未知命令: ${command}`);
+    console.log("可用命令: add, update, delete, mark-in-progress, mark-done, list");
+    break;
+}

@@ -1,16 +1,9 @@
 [
   {
-    "id": 1770437748708,
-    "description": "學習TypeScript",
+    "id": 1770553310104,
+    "description": "準備 英文測驗",
     "status": "todo",
-    "createdAt": "2026-02-07T04:15:48.708Z",
-    "updatedAt": "2026-02-07T04:15:48.708Z"
-  },
-  {
-    "id": 1770437748718,
-    "description": "進入phase 2",
-    "status": "todo",
-    "createdAt": "2026-02-07T04:15:48.718Z",
-    "updatedAt": "2026-02-07T04:15:48.718Z"
+    "createdAt": "2026-02-08T12:21:50.104Z",
+    "updatedAt": "2026-02-08T12:21:50.104Z"
   }
 ]
