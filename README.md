@@ -24,7 +24,7 @@
   - [x] Event Emitter (事件驅動架構)
   - [x] Streams (串流處理大檔案)
   - [x] Process & CLI Arguments
-- [ ] **🏆 Project 1: Task Tracker CLI** (純 Node.js 實作指令列工具)
+- [x] **🏆 Project 1: Task Tracker CLI** (使用 Node.js + TypeScript 實作CLI任務管理工具)
 
 ## 🤖 AI 協作與學習模式 (AI-Assisted Learning)
 
