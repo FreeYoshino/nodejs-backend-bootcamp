@@ -30,11 +30,11 @@
 
 目標：從 CLI 進化到 Web Server，掌握 HTTP 協定、RESTful API 設計與關聯式資料庫操作 (CRUD)。
 
-- [ ] **Week 5-6: Web Server Basics & Express.js**
-  - [ ] `HTTP Protocol` (Methods: GET, POST, PUT, DELETE / Status Codes)
-  - [ ] `Express Framework` (Routing, Middleware, Request/Response)
-  - [ ] `REST API Architecture` (API 設計規範)
-  - [ ] Tools: `Postman` / `Thunder Client` (API Testing)
+- [x] **Week 5-6: Web Server Basics & Express.js**
+  - [x] `HTTP Protocol` (Methods: GET, POST, PUT, DELETE / Status Codes)
+  - [x] `Express Framework` (Routing, Middleware, Request/Response)
+  - [x] `REST API Architecture` (API 設計規範)
+  - [x] Tools: `Postman` / `Thunder Client` (API Testing)
 - [ ] **Week 7: Database Fundamentals (PostgreSQL)**
   - [ ] Database Setup (Local / Docker)
   - [ ] `SQL Syntax` (SELECT, INSERT, UPDATE, DELETE, JOIN)
