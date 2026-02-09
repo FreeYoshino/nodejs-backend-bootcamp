@@ -45,6 +45,26 @@ app.delete("/tasks/:id", (req: Request, res: Response) => {
   res.json({ message: `任務 ${id} 已刪除`, remaining: tasks });
 });
 
+// [PUT] 更新資料
+app.put("/tasks/:id", (req: Request, res: Response) => {
+  const id = parseInt(req.params.id as string);
+  const { description, status } = req.body;
+
+  // 搜尋任務
+  const task = tasks.find((task) => task.id === id);
+
+  if (!task) {
+    res.status(404).json({ error: "任務不存在" });
+    return;
+  }
+
+  // 更新任務
+  if(description) task.description = description;
+  if (status) task.status = status;
+  
+  res.json(task);
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
