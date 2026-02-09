@@ -26,6 +26,25 @@
   - [x] Process & CLI Arguments
 - [x] **🏆 Project 1: Task Tracker CLI** (使用 Node.js + TypeScript 實作CLI任務管理工具)
 
+### 📍 Phase 2: API 開發與資料庫 - Express & SQL
+
+目標：從 CLI 進化到 Web Server，掌握 HTTP 協定、RESTful API 設計與關聯式資料庫操作 (CRUD)。
+
+- [ ] **Week 5-6: Web Server Basics & Express.js**
+  - [ ] `HTTP Protocol` (Methods: GET, POST, PUT, DELETE / Status Codes)
+  - [ ] `Express Framework` (Routing, Middleware, Request/Response)
+  - [ ] `REST API Architecture` (API 設計規範)
+  - [ ] Tools: `Postman` / `Thunder Client` (API Testing)
+- [ ] **Week 7: Database Fundamentals (PostgreSQL)**
+  - [ ] Database Setup (Local / Docker)
+  - [ ] `SQL Syntax` (SELECT, INSERT, UPDATE, DELETE, JOIN)
+  - [ ] GUI Tools (`TablePlus` / `DBeaver`)
+- [ ] **Week 8: Modern ORM (Prisma)**
+  - [ ] `Prisma Schema` & Models (資料建模)
+  - [ ] `Migrations` (資料庫結構版控)
+  - [ ] `Prisma Client` (Type-safe Database Queries)
+- [ ] **🏆 Project 2: Personal Blog API** (Express + Prisma + PostgreSQL)
+
 ## 🤖 AI 協作與學習模式 (AI-Assisted Learning)
 
 - **Virtual Mentor (虛擬導師):** Google Gemini
