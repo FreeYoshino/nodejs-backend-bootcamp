@@ -3,6 +3,9 @@ import express from "express";
 const app = express();
 const PORT = 3000;
 
+// Middleware: 讓Express能夠解析JSON格式的request body
+app.use(express.json());
+
 // 1. 基本的路由(Root Route)
 app.get("/", (req, res) => {
   res.send("Hello, Express! 這是根路由");
