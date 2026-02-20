@@ -35,10 +35,10 @@
   - [x] `Express Framework` (Routing, Middleware, Request/Response)
   - [x] `REST API Architecture` (API 設計規範)
   - [x] Tools: `Postman` / `Thunder Client` (API Testing)
-- [ ] **Week 7: Database Fundamentals (PostgreSQL)**
-  - [ ] Database Setup (Local / Docker)
-  - [ ] `SQL Syntax` (SELECT, INSERT, UPDATE, DELETE, JOIN)
-  - [ ] GUI Tools (`TablePlus` / `DBeaver`)
+- [x] **Week 7: Database Fundamentals (PostgreSQL)**
+  - [x] Database Setup (Local / Docker)
+  - [x] `SQL Syntax` (SELECT, INSERT, UPDATE, DELETE, JOIN)
+  - [x] GUI Tools (`TablePlus` / `DBeaver`)
 - [ ] **Week 8: Modern ORM (Prisma)**
   - [ ] `Prisma Schema` & Models (資料建模)
   - [ ] `Migrations` (資料庫結構版控)
