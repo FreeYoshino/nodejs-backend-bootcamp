@@ -39,10 +39,10 @@
   - [x] Database Setup (Local / Docker)
   - [x] `SQL Syntax` (SELECT, INSERT, UPDATE, DELETE, JOIN)
   - [x] GUI Tools (`TablePlus` / `DBeaver`)
-- [ ] **Week 8: Modern ORM (Prisma)**
-  - [ ] `Prisma Schema` & Models (資料建模)
-  - [ ] `Migrations` (資料庫結構版控)
-  - [ ] `Prisma Client` (Type-safe Database Queries)
+- [x] **Week 8: Modern ORM (Prisma)**
+  - [x] `Prisma Schema` & Models (資料建模)
+  - [x] `Migrations` (資料庫結構版控)
+  - [x] `Prisma Client` (Type-safe Database Queries)
 - [ ] **🏆 Project 2: Personal Blog API** (Express + Prisma + PostgreSQL)
 
 ## 🤖 AI 協作與學習模式 (AI-Assisted Learning)
