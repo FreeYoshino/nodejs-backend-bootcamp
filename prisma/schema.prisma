@@ -12,3 +12,23 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+// 1. 定義 User 模型 (對應資料庫的 users 表)
+model User {
+  id    Int    @id @default(autoincrement()) // @id 代表 Primary Key，autoincrement 代表 SERIAL 自動遞增
+  name  String
+
+  // Prisma 專屬魔法：告訴程式「一個 User 可以擁有多個 Task」 (這行不會真正在資料庫裡變成欄位)
+  tasks Task[] 
+}
+
+// 2. 定義 Task 模型 (對應資料庫的 tasks 表)
+model Task {
+  id          Int    @id @default(autoincrement())
+  description String
+  status      String @default("todo") // 預設值是 'todo'
+  
+  // 建立關聯：這兩行取代了以前複雜的 FOREIGN KEY 語法
+  userId      Int    // 這是真實存在資料庫裡的整數欄位
+  user        User   @relation(fields: [userId], references: [id]) // 這是 Prisma 用來幫助你關聯的設定
+}
