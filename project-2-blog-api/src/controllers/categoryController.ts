@@ -19,3 +19,36 @@ export const getAllCategories = async (req: Request, res: Response) => {
     });
   }
 };
+
+// 建立新分類
+export const createCategory = async (req: Request, res: Response) => {
+  try {
+    const { name } = req.body;
+
+    // 基本的輸入驗證
+    if (!name) {
+      return res.status(400).json({
+        success: false,
+        message: "name是必填欄位",
+      });
+    }
+
+    const category = await prisma.catagory.create({
+      data: {
+        name,
+      },
+    });
+
+    return res.status(201).json({
+      success: true,
+      data: category,
+    });
+  } catch (error) {
+    console.error("Create category error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "伺服器發生錯誤，無法建立分類",
+    });
+  }
+};
