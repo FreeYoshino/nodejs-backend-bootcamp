@@ -4,7 +4,7 @@ import prisma from "../lib/prisma";
 // 取得所有分類
 export const getAllCategories = async (req: Request, res: Response) => {
   try {
-    const categories = await prisma.catagory.findMany();
+    const categories = await prisma.category.findMany();
 
     return res.status(200).json({
       success: true,
@@ -33,7 +33,7 @@ export const createCategory = async (req: Request, res: Response) => {
       });
     }
 
-    const category = await prisma.catagory.create({
+    const category = await prisma.category.create({
       data: {
         name,
       },

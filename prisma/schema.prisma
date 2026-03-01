@@ -51,11 +51,11 @@ model Post{
 
   // 關聯與Category關聯
   categoryId Int?
-  catagory Catagory? @relation(fields: [categoryId], references: [id])
+  category Category? @relation(fields: [categoryId], references: [id])
 }
 
 // 4. Category 模型: 文章分類
-model Catagory{
+model Category{
   id    Int    @id @default(autoincrement())
   name  String @unique // 分類名稱必須唯一
 
