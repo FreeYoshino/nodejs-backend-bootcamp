@@ -5,7 +5,18 @@ import { Prisma } from "@prisma/client";
 // 取得所有文章
 export const getAllPosts = async (req: Request, res: Response) => {
   try {
+    const { categoryId, authorId } = req.query;
+    const where: Prisma.PostWhereInput = {};
+
+    if (categoryId && !isNaN(Number(categoryId))) {
+      where.categoryId = Number(categoryId);
+    }
+    if (authorId && !isNaN(Number(authorId))) {
+      where.authorId = Number(authorId);
+    }
+
     const posts = await prisma.post.findMany({
+      where,  // 帶入篩選條件
       orderBy: {
         createdAt: "desc",
       },
