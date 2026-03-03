@@ -178,3 +178,38 @@ export const updatePost = async (req: Request, res: Response) => {
     });
   }
 };
+
+
+// 刪除文章
+export const deletePost = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    // 驗證 URL ID
+    const postId = Number(id);
+    if (isNaN(postId)) {
+      return res.status(400).json({ success: false, message: "無效的文章 ID" });
+    }
+
+    await prisma.post.delete({
+      where: { id: postId },
+    }); 
+
+    return res.status(200).json({ success: true, message: "文章已成功刪除" });
+  } catch (error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      if (error.code === "P2025") {
+        return res.status(404).json({
+          success: false,
+          message: "刪除失敗: 文章不存在",
+        });
+      }
+    }
+
+    console.error("Delete post error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "伺服器發生錯誤，無法刪除文章",
+    });
+  }
+}
