@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express";
+import { Prisma } from "@prisma/client";
 
 // 404 Not Found Middleware
 export const notFoundMiddleware = (
@@ -6,27 +7,57 @@ export const notFoundMiddleware = (
   res: Response,
   next: NextFunction,
 ) => {
-  const error = new Error(`Not Found: ${req.originalUrl}`);
-  res.status(404);
+  const error = new Error(`找不到路徑: ${req.originalUrl}`) as any;
+  error.statusCode = 404;
   next(error);
 };
 
 // Global Error Middleware
 // 必須包含4個參數，才能被 Express 識別為錯誤處理中間件
 export const globalErrorMiddleware = (
-  err: Error,
+  err: any,
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
-  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+  let statusCode = err.statusCode || 500;
+  let message = err.message || "伺服器發生錯誤";
 
-  console.error(`[Error]: ${err.message}`);
+  // 處理 Prisma 的特定錯誤
+  if (err instanceof Prisma.PrismaClientKnownRequestError) {
+    switch (err.code) {
+      case "P2002": // Unique constraint failed
+        statusCode = 409;
+        message = "資料重複，該紀錄已存在";
+        break;
+      case "P2025": // Record not found
+        statusCode = 404;
+        message = "找不到指定的紀錄";
+        break;
+      default:
+        statusCode = 400;
+        message = `資料庫操作失敗 (代碼: ${err.code})`;
+        break;
+    }
+  }
+
+  // 處理 Joi 的驗證錯誤
+  if (err.isJoi) {
+    statusCode = 400;
+    message = err.details.map((detail: any) => detail.message).join(", ");
+  }
+
+  // 記錄錯誤 Log
+  if (process.env.NODE_ENV !== "production") {
+    console.error(`[Error Trace]: ${err}`);
+  } else {
+    console.error(`[Error]: ${message} | Path: ${req.path}`);
+  }
 
   res.status(statusCode).json({
     status: "error",
-    message: err.message,
-    // 在開發環境中返回堆疊訊息，在生產環境中隱藏堆疊訊息
-    stack: process.env.NODE_ENV === "production" ? null : err.stack,
+    message,
+    // 只有在開發環境才回傳錯誤堆疊資訊
+    stack: process.env.NODE_ENV === "production" ? undefined : err.stack,
   });
 };
