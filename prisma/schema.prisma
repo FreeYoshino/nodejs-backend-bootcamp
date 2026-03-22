@@ -14,16 +14,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// 1. 定義 User 模型 (對應資料庫的 users 表)
+// 1. User 模型
 model User {
   id    Int    @id @default(autoincrement()) // @id 代表 Primary Key，autoincrement 代表 SERIAL 自動遞增
   name  String
+  email String @unique // @unique 代表這個欄位的值必須是唯一的
 
   // Prisma 專屬魔法：告訴程式「一個 User 可以擁有多個 Task」 (這行不會真正在資料庫裡變成欄位)
   tasks Task[] 
+  posts Post[]
 }
 
-// 2. 定義 Task 模型 (對應資料庫的 tasks 表)
+// 2. Task 模型
 model Task {
   id          Int    @id @default(autoincrement())
   description String
@@ -32,4 +34,31 @@ model Task {
   // 建立關聯：這兩行取代了以前複雜的 FOREIGN KEY 語法
   userId      Int    // 這是真實存在資料庫裡的整數欄位
   user        User   @relation(fields: [userId], references: [id]) // 這是 Prisma 用來幫助你關聯的設定
+}
+
+// 3. Post 模型: blog 的核心
+model Post{
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String? // content 是可選的，代表它可以是 null
+  published Boolean  @default(false) // 預設值是 false
+  createdAt DateTime @default(now()) // 預設值是目前的時間
+  updatedAt DateTime @updatedAt // 每次更新時自動更新這個欄位
+  
+  // 建立與User的關聯
+  authorId  Int
+  author    User     @relation(fields: [authorId], references: [id])
+
+  // 關聯與Category關聯
+  categoryId Int?
+  category Category? @relation(fields: [categoryId], references: [id])
+}
+
+// 4. Category 模型: 文章分類
+model Category{
+  id    Int    @id @default(autoincrement())
+  name  String @unique // 分類名稱必須唯一
+
+  // 一個分類可以有多篇文章
+  posts Post[]
 }
