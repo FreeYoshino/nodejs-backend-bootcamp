@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction} from "express";
 import prisma from "../lib/prisma";
 import { Prisma } from "@prisma/client";
 
 // 取得所有使用者
-export const getAllUsers = async (req: Request, res: Response) => {
+export const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
     // 從資料庫取得所有使用者
     const users = await prisma.user.findMany();
@@ -14,18 +14,12 @@ export const getAllUsers = async (req: Request, res: Response) => {
       data: users,
     });
   } catch (error) {
-    console.error("Get all users error:", error);
-
-    // 回傳錯誤訊息
-    return res.status(500).json({
-      success: false,
-      message: "伺服器發生錯誤，無法取得使用者資料",
-    });
+    next(error); // 將錯誤傳遞給全局錯誤處理器
   }
 };
 
 // 建立新使用者
-export const createUser = async (req: Request, res: Response) => {
+export const createUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { name, email } = req.body; // 從請求的 body 中取得 name 和 email
 
@@ -50,6 +44,7 @@ export const createUser = async (req: Request, res: Response) => {
       data: user,
     });
   } catch (error) {
+    next(error); // 將錯誤傳遞給全局錯誤處理器
     // 處理Prisma的錯誤
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       if (error.code === "P2002") {

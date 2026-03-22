@@ -22,13 +22,16 @@ export const globalErrorMiddleware = (
 ) => {
   let statusCode = err.statusCode || 500;
   let message = err.message || "伺服器發生錯誤";
+  let field = err.field || undefined;
 
   // 處理 Prisma 的特定錯誤
   if (err instanceof Prisma.PrismaClientKnownRequestError) {
     switch (err.code) {
       case "P2002": // Unique constraint failed
         statusCode = 409;
-        message = "資料重複，該紀錄已存在";
+        const targetField = (err.meta?.target as string[])?.[0];
+        field = targetField;
+        message = `資料重複，${targetField} 已存在`;
         break;
       case "P2025": // Record not found
         statusCode = 404;
@@ -57,6 +60,7 @@ export const globalErrorMiddleware = (
   res.status(statusCode).json({
     status: "error",
     message,
+    field,
     // 只有在開發環境才回傳錯誤堆疊資訊
     stack: process.env.NODE_ENV === "production" ? undefined : err.stack,
   });
